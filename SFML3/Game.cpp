@@ -6,6 +6,7 @@ using namespace sf;
 Game::Game()
     : m_window(VideoMode(800, 600), "SFML3")
 {
+    m_window.setFramerateLimit(60);
     m_window.setVerticalSyncEnabled(true);
 
     m_player.setRadius(40.f);
