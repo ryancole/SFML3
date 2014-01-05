@@ -2,6 +2,7 @@
 #define _GAME_H_
 
 #include <SFML\Graphics.hpp>
+#include "TextureManager.hpp"
 
 class Game
 {
@@ -54,7 +55,7 @@ private:
 
 private:
 
-    sf::CircleShape m_player;
+    sf::Sprite m_player;
     sf::RenderWindow m_window;
 
 private:
@@ -63,6 +64,8 @@ private:
     bool m_isMovingDown;
     bool m_isMovingLeft;
     bool m_isMovingRight;
+
+    TextureManager m_textures;
 
 };
 

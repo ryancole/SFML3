@@ -1,17 +1,20 @@
-#include "Game.h"
+#include "Game.hpp"
 
 using namespace sf;
 
 /////////////////////////////////////
 Game::Game()
     : m_window(VideoMode(800, 600), "SFML3")
-{
-    m_window.setFramerateLimit(60);
+{   
+    // initialize window settings
     m_window.setVerticalSyncEnabled(true);
 
-    m_player.setRadius(40.f);
-    m_player.setPosition(100.f, 100.f);
-    m_player.setFillColor(Color::Cyan);
+    // load textures
+    m_textures.load(TextureId::PlayerStanding, "media/texture/player_stand.png");
+
+    // initialize sprite settings
+    m_player.setTexture(m_textures.get(TextureId::PlayerStanding));
+    m_player.setPosition(m_window.getSize().x / 2, m_window.getSize().y / 2);
 
     m_isMovingUp = false;
     m_isMovingLeft = false;
@@ -29,9 +32,6 @@ void Game::run()
     while (m_window.isOpen())
     {
         timeSinceLastUpdate += clock.restart();
-
-        // process Winform events
-        processEvents();
 
         while (timeSinceLastUpdate > timePerFrame)
         {
